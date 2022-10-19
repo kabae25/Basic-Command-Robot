@@ -13,9 +13,23 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    //Drive Train CAN IDs
+
+    /** CAN IDs */
+    // Drive Train
     public static int leftMotor1ID = 1;
     public static int leftMotor2ID = 2;
     public static int rightMotor1ID = 3;
     public static int rightMotor2ID = 4;
+
+    // Fly Wheel
+    public static int flyWheelID = 5;
+
+    /** Drive Train Constants **/
+    public static double linearSpeedSensitivity = 0.8;
+    public static double rotationSpeedSensitivity = 0.8;
+
+    /** Fly Wheel Constants **/ */
+    public static double flyIdleSpeed = 0.2;
+
+
 }

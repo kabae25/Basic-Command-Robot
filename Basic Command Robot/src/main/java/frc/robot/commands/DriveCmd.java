@@ -37,7 +37,7 @@ public class DriveCmd extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    System.out.println("Drive Command Initialized"); // print to log that the command started
 
   }
 
@@ -45,13 +45,15 @@ public class DriveCmd extends CommandBase {
   @Override
   public void execute() {
 
-    driveSubsystem.drivetrain.arcadeDrive(linearSpeed.get(), turnSpeed.get());
+    driveSubsystem.drivetrain.arcadeDrive(linearSpeed.get() * Constants.linearSpeedSensitivity, turnSpeed.get() * Constants.rotationSpeedSensitivity);
 
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    System.out.println("Drive Command Stopped"); // print to log that the command stopped
+  }
 
   // Returns true when the command should end.
   @Override
