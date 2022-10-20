@@ -6,14 +6,13 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCmd;
 import frc.robot.commands.flyIdleCmd;
 import frc.robot.commands.flyRevCmd;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FlyWheelSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,7 +25,7 @@ public class RobotContainer {
   // Create Instances of robot subsystems
   public final DriveSubsystem driveSubsystem = new DriveSubsystem();
   public final FlyWheelSubsystem flyWheelSubsystem = new FlyWheelSubsystem();
-  public final FlyWheelSubsystem flWheelSubsystem = new FlyWheelSubsystem();
+  //public final FlyWheelSubsystem flWheelSubsystem = new FlyWheelSubsystem();
 
 
   // Create instance of a joystick controller
@@ -42,8 +41,8 @@ public class RobotContainer {
 
 
     // Set default commands
-    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftX(), () -> joy1.getRightX())); //default command is drive with joystick inputs
-    flyWheelSubsystem.setDefaultCommand(new flyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2
+    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftY(), () -> joy1.getRightX())); //default command is drive with joystick inputs
+    flyWheelSubsystem.setDefaultCommand(new flyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
   }
 
   /**
@@ -54,10 +53,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new joy1.getAButton().whileActive(new flyRevCmd(flyWheelSubsystem, 1) );
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
+
+  
 
   }
-
 
   
 
@@ -70,5 +70,4 @@ public class RobotContainer {
   //public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
-  }
 }

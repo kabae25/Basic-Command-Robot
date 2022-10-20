@@ -4,12 +4,9 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.FlyWheelSubsystem;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.FlyWheelSubsystem;
-
-import java.util.function.Supplier;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */

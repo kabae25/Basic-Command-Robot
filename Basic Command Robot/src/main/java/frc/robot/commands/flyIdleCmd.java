@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.FlyWheelSubsystem;
 
@@ -15,7 +16,6 @@ public class flyIdleCmd extends CommandBase {
 
   // Local instance variables
   private final FlyWheelSubsystem flyWheelSubsystem; // referencing the drive subsystem class
-  private Double flyWheelSpeed;
 
   // Constructor for Drive command (called when you create an instance of the command)
   // pass in reference subsystem, and flywheel speed value

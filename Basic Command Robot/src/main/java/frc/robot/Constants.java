@@ -22,14 +22,15 @@ public final class Constants {
     public static int rightMotor2ID = 4;
 
     // Fly Wheel
-    public static int flyWheelID = 5;
+    public static int flyWheelID = 6;
 
     /** Drive Train Constants **/
     public static double linearSpeedSensitivity = 0.8;
     public static double rotationSpeedSensitivity = 0.8;
 
-    /** Fly Wheel Constants **/ */
-    public static double flyIdleSpeed = 0.2;
+    /** Fly Wheel Constants **/ 
+    public static double flyIdleSpeed = 0.05;
+    public static double flyRevSpeed = 0.5;
 
 
 }
