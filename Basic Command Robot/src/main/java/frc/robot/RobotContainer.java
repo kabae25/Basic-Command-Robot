@@ -39,7 +39,7 @@ public class RobotContainer {
 
 
     // Set default commands for each subsystem
-    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftY(), () -> joy1.getRightX())); //default command is drive with joystick inputs
+    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftY() * Constants.linearSpeedSensitivity, () -> joy1.getRightX() * Constants.rotationSpeedSensitivity)); //default command is drive with joystick inputs
     flyWheelSubsystem.setDefaultCommand(new flyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
   }
 

@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.FlyWheelSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-//import frc.robot.RobotContainer;
+//import frc.robot.RobotContainer; // Unclear if this is necessary
 
 /** An example command that uses an example subsystem. */
 public class flyRevCmd extends CommandBase {
@@ -43,12 +43,13 @@ public class flyRevCmd extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    System.out.println("Fly Wheel Rev Command Ended");
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println("Fly Wheel Rev Command Ended");
     return true;
   }
 }

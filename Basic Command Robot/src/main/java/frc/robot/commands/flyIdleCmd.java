@@ -5,8 +5,8 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.FlyWheelSubsystem;
+//import frc.robot.RobotContainer; // Unclear if this is necessary
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -44,12 +44,13 @@ public class flyIdleCmd extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    System.out.println("Fly Wheel Idle Command Ended");
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println("Fly Wheel Idle Command Ended");
     return false;
   }
 }

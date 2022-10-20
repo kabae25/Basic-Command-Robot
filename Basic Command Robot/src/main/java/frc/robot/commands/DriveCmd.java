@@ -44,21 +44,19 @@ public class DriveCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    driveSubsystem.drivetrain.arcadeDrive(linearSpeed.get() * Constants.linearSpeedSensitivity, turnSpeed.get() * Constants.rotationSpeedSensitivity);
+    driveSubsystem.drivetrain.arcadeDrive(linearSpeed.get(), turnSpeed.get());
 
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
+  System.out.println("Drive Command Ended"); // print to log that the command stopped  
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println("Drive Command Ended"); // print to log that the command stopped
     return false;
   }
 }
