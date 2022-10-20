@@ -21,7 +21,7 @@ public class flyRevCmd extends CommandBase {
   public flyRevCmd(FlyWheelSubsystem flyWheelSubsystem, double flyRevSpeed) { //telling the command where to go to get the speed values
 
     this.flyWheelSubsystem = flyWheelSubsystem; // assigning values to be used from where ever the command is called 
-    this.flyRevSpeed = flyRevSpeed;
+    this.flyRevSpeed = flyRevSpeed; //assign values from method to class
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(flyWheelSubsystem);
@@ -30,7 +30,7 @@ public class flyRevCmd extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+  System.out.println("Fly Wheel Rev Command Initiated");
 
   }
 
@@ -49,6 +49,7 @@ public class flyRevCmd extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    System.out.println("Fly Wheel Rev Command Ended");
+    return true;
   }
 }
