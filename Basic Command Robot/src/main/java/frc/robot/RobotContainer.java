@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCmd;
@@ -25,7 +24,6 @@ public class RobotContainer {
   // Create Instances of robot subsystems
   public final DriveSubsystem driveSubsystem = new DriveSubsystem();
   public final FlyWheelSubsystem flyWheelSubsystem = new FlyWheelSubsystem();
-  //public final FlyWheelSubsystem flWheelSubsystem = new FlyWheelSubsystem();
 
 
   // Create instance of a joystick controller
@@ -40,7 +38,7 @@ public class RobotContainer {
     configureButtonBindings();
 
 
-    // Set default commands
+    // Set default commands for each subsystem
     driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftY(), () -> joy1.getRightX())); //default command is drive with joystick inputs
     flyWheelSubsystem.setDefaultCommand(new flyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
   }
@@ -53,7 +51,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
 
   
 

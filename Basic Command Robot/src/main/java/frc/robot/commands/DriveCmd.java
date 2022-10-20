@@ -5,9 +5,8 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveSubsystem;
+//import frc.robot.RobotContainer; // Unclear if this is necessary
 
 import java.util.function.Supplier;
 
@@ -53,12 +52,13 @@ public class DriveCmd extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    System.out.println("Drive Command Stopped"); // print to log that the command stopped
+    
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    System.out.println("Drive Command Ended"); // print to log that the command stopped
     return false;
   }
 }

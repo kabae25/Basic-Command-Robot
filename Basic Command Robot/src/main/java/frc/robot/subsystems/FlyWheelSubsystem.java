@@ -22,7 +22,7 @@ public class FlyWheelSubsystem extends SubsystemBase {
   /** Creates a new Drive Subsystem. */
   public FlyWheelSubsystem() { 
       // initialize when driveSubsystem is created
-    
+      System.out.println("Fly Wheel Subsystem Initialized");
     }
 
   

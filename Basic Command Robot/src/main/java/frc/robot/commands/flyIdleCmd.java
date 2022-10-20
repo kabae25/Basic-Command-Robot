@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.FlyWheelSubsystem;
 
@@ -31,7 +30,7 @@ public class flyIdleCmd extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    System.out.println("Fly Wheel Idle Command Initialized");
 
   }
 
@@ -50,6 +49,7 @@ public class flyIdleCmd extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    System.out.println("Fly Wheel Idle Command Ended");
     return false;
   }
 }

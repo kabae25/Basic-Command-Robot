@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -35,6 +33,7 @@ public class DriveSubsystem extends SubsystemBase {
       // initialize when driveSubsystem is created
       rightMotor1.setInverted(true); 
       rightMotor2.setInverted(true);
+      System.out.println("Drive Subsystem Initialized");
     }
 
   
