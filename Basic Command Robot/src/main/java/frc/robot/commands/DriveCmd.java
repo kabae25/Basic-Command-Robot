@@ -44,7 +44,7 @@ public class DriveCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveSubsystem.drivetrain.arcadeDrive(linearSpeed.get(), turnSpeed.get());
+    driveSubsystem.drivetrain.curvatureDrive(linearSpeed.get(), turnSpeed.get(), true);//used to be curvature drive
 
   }
 

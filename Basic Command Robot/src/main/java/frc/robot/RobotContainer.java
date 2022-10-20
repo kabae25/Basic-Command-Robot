@@ -4,11 +4,15 @@
 
 package frc.robot;
 
+import java.util.ResourceBundle.Control;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCmd;
 import frc.robot.commands.flyIdleCmd;
 import frc.robot.commands.flyRevCmd;
+import frc.robot.commands.rumbleCmd;
+import frc.robot.subsystems.ControlSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FlyWheelSubsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -24,10 +28,10 @@ public class RobotContainer {
   // Create Instances of robot subsystems
   public final DriveSubsystem driveSubsystem = new DriveSubsystem();
   public final FlyWheelSubsystem flyWheelSubsystem = new FlyWheelSubsystem();
-
+  public final ControlSubsystem controlSubsystem = new ControlSubsystem();
 
   // Create instance of a joystick controller
-  public XboxController joy1 = new XboxController(1);
+  public XboxController joy1 = new XboxController(Constants.controllerPort);
 
 
 
@@ -51,9 +55,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
-
-  
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new rumbleCmd(controlSubsystem, Constants.rumble)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
 
   }
 

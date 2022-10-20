@@ -4,32 +4,33 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.ControlSubsystem;
 import frc.robot.subsystems.FlyWheelSubsystem;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 //import frc.robot.RobotContainer; // Unclear if this is necessary
 
 /** An example command that uses an example subsystem. */
-public class flyRevCmd extends CommandBase {
+public class rumbleCmd extends CommandBase {
 
   // Local instance variables
-  private final FlyWheelSubsystem flyWheelSubsystem; // referencing the drive subsystem class
-  private double flyRevSpeed;
+  private final ControlSubsystem controlSubsystem; // referencing the drive subsystem class
+  private double rumble;
 
   // Constructor for Drive command (called when you create an instance of the command)
   // pass in reference subsystem, and flywheel speed value
-  public flyRevCmd(FlyWheelSubsystem flyWheelSubsystem, double flyRevSpeed) { //telling the command where to go to get the speed values
+  public rumbleCmd(ControlSubsystem controlSubsystem, double rumble) { //telling the command where to go to get the speed values
 
-    this.flyWheelSubsystem = flyWheelSubsystem; // assigning values to be used from where ever the command is called 
-    this.flyRevSpeed = flyRevSpeed; //assign values from method to class
-
+    this.controlSubsystem = controlSubsystem; // assigning values to be used from where ever the command is called 
+    this.rumble = rumble;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(flyWheelSubsystem);
+    addRequirements(controlSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-  System.out.println("Fly Wheel Rev Command Initiated");
+  System.out.println("Controller Rumble Command Initiated");
 
   }
 
@@ -37,13 +38,15 @@ public class flyRevCmd extends CommandBase {
   @Override
   public void execute() {
 
-    flyWheelSubsystem.flyWheel.set(flyRevSpeed);
+    controlSubsystem.joy1.setRumble(RumbleType.kRightRumble,rumble);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     System.out.println("Fly Wheel Rev Command Ended");
+    controlSubsystem.joy1.setRumble(RumbleType.kRightRumble,0);
+
   }
 
   // Returns true when the command should end.

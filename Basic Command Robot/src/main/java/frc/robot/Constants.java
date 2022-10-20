@@ -29,8 +29,12 @@ public final class Constants {
     public static double rotationSpeedSensitivity = 0.8;
 
     /** Fly Wheel Constants **/ 
-    public static double flyIdleSpeed = 0.05;
+    public static double flyIdleSpeed = 0.02;
     public static double flyRevSpeed = 0.5;
 
+    public static int controllerPort = 1;
+    public static double rumble = 0.5;
+
+    
 
 }
