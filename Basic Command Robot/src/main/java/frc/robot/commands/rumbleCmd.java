@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.ControlSubsystem;
-import frc.robot.subsystems.FlyWheelSubsystem;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 //import frc.robot.RobotContainer; // Unclear if this is necessary
