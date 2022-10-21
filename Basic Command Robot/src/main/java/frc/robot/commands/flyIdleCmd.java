@@ -11,14 +11,14 @@ import frc.robot.subsystems.FlyWheelSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class flyIdleCmd extends CommandBase {
+public class FlyIdleCmd extends CommandBase {
 
   // Local instance variables
   private final FlyWheelSubsystem flyWheelSubsystem; // referencing the drive subsystem class
 
   // Constructor for Drive command (called when you create an instance of the command)
   // pass in reference subsystem, and flywheel speed value
-  public flyIdleCmd(FlyWheelSubsystem flyWheelSubsystem) { //telling the command where to go to get the speed values
+  public FlyIdleCmd(FlyWheelSubsystem flyWheelSubsystem) { //telling the command where to go to get the speed values
 
     this.flyWheelSubsystem = flyWheelSubsystem; // assigning values to be used from where ever the command is called 
 

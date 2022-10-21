@@ -4,12 +4,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCmd;
-import frc.robot.commands.flyIdleCmd;
-import frc.robot.commands.flyRevCmd;
-import frc.robot.commands.rumbleCmd;
+import frc.robot.commands.FlyIdleCmd;
+import frc.robot.commands.FlyRevCmd;
+import frc.robot.commands.ControllerRumbleCmd;
 import frc.robot.subsystems.ControlSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FlyWheelSubsystem;
@@ -31,32 +31,32 @@ public class RobotContainer {
   // Create instance of a joystick controller
   public XboxController joy1 = new XboxController(Constants.controllerPort);
 
-
+  // Creates a SlewRateLimiter that limits the rate of change of the signal to 0.2 units per second
+  SlewRateLimiter filter = new SlewRateLimiter(Constants.driveFilterLinearROC);
+  SlewRateLimiter driveFilter = new SlewRateLimiter(Constants.driveFilterTurnROC);
 
   
   /** Create the container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the button bindings
+
+    // Call method to configure the button bindings
     configureButtonBindings();
 
 
     // Set default commands for each subsystem
-    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> joy1.getLeftY() * Constants.linearSpeedSensitivity, () -> joy1.getRightX() * Constants.rotationSpeedSensitivity)); //default command is drive with joystick inputs
-    flyWheelSubsystem.setDefaultCommand(new flyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
+    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> filter.calculate(joy1.getLeftY()) * Constants.drivingLinearSpeedSensitivity,() -> joy1.getRightX() * Constants.drivingTurnSpeedSensitivity)); //default command is drive with joystick inputs
+    flyWheelSubsystem.setDefaultCommand(new FlyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
   }
 
-  /**
-   * Use this method to define your button->command mappings. Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
+
+  //Button Mapping Method
   private void configureButtonBindings() {
 
-    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new flyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
-    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new rumbleCmd(controlSubsystem, Constants.rumble)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new FlyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new ControllerRumbleCmd(controlSubsystem, Constants.rumble)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
 
   }
+
 
   
 

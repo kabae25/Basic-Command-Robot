@@ -22,12 +22,14 @@ public final class Constants {
     public static int rightMotor2ID = 4;
 
     // Fly Wheel
-    public static int flyWheelID = 6;
+    public static int flyWheelID = 6; // CAN ID for Neo SparkMax
 
     /** Drive Train Constants **/
-    public static double linearSpeedSensitivity = 0.8;
-    public static double rotationSpeedSensitivity = 0.8;
+    public static double drivingLinearSpeedSensitivity = 0.8;
+    public static double drivingTurnSpeedSensitivity = 0.8;
 
+    public static double driveFilterLinearROC = 1.5; //Primitive Motion profile ROC for linear speed while driving
+    public static double driveFilterTurnROC = 0.5; // Primitive Motion profile ROC for turning while driving
     /** Fly Wheel Constants **/ 
     public static double flyIdleSpeed = 0.02;
     public static double flyRevSpeed = 0.5;

@@ -16,7 +16,7 @@ public class DriveCmd extends CommandBase {
 
   // Local instance variables
   private final DriveSubsystem driveSubsystem; // referencing the drive subsystem class
-  private Supplier<Double> linearSpeed;
+  private Supplier<Double> linearSpeed; // Supplier used because input is a function
   private Supplier<Double> turnSpeed;
 
   // Constructor for Drive command (called when you create an instance of the command)

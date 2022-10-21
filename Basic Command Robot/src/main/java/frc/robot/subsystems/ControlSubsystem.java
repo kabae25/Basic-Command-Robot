@@ -8,6 +8,8 @@ package frc.robot.subsystems;
 //import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 //import frc.robot.RobotContainer;
@@ -29,6 +31,16 @@ public class ControlSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    
+  }
+
+  //Control System Robot Periodic
+  public void robotPeriodic() {
+    SmartDashboard.putData(CommandScheduler.getInstance()); // Display commands on smart dashboard
+    SmartDashboard.updateValues();
+  }
+
+  public void disabledPeriodic() {
   }
 
 

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 //import frc.robot.RobotContainer; // Unclear if this is necessary
 
 /** An example command that uses an example subsystem. */
-public class rumbleCmd extends CommandBase {
+public class ControllerRumbleCmd extends CommandBase {
 
   // Local instance variables
   private final ControlSubsystem controlSubsystem; // referencing the drive subsystem class
@@ -18,7 +18,7 @@ public class rumbleCmd extends CommandBase {
 
   // Constructor for Drive command (called when you create an instance of the command)
   // pass in reference subsystem, and flywheel speed value
-  public rumbleCmd(ControlSubsystem controlSubsystem, double rumble) { //telling the command where to go to get the speed values
+  public ControllerRumbleCmd(ControlSubsystem controlSubsystem, double rumble) { //telling the command where to go to get the speed values
 
     this.controlSubsystem = controlSubsystem; // assigning values to be used from where ever the command is called 
     this.rumble = rumble;
@@ -43,7 +43,7 @@ public class rumbleCmd extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    System.out.println("Fly Wheel Rev Command Ended");
+    System.out.println("Controller Rumble Command Ended");
     controlSubsystem.joy1.setRumble(RumbleType.kRightRumble,0);
 
   }
