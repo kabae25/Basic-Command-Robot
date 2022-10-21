@@ -6,13 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.DriveCmd;
-import frc.robot.commands.FlyIdleCmd;
-import frc.robot.commands.FlyRevCmd;
-import frc.robot.commands.ControllerRumbleCmd;
-import frc.robot.subsystems.ControlSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.FlyWheelSubsystem;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -43,8 +38,9 @@ public class RobotContainer {
     configureButtonBindings();
 
 
-    // Set default commands for each subsystem
-    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> filter.calculate(joy1.getLeftY()) * Constants.drivingLinearSpeedSensitivity,() -> joy1.getRightX() * Constants.drivingTurnSpeedSensitivity)); //default command is drive with joystick inputs
+    /* Set default commands for each subsystem */
+    //default command is drive with joystick inputs
+    driveSubsystem.setDefaultCommand(new DriveCmd(driveSubsystem,() -> filter.calculate(joy1.getLeftY()) * Constants.drivingLinearSpeedSensitivity,() -> joy1.getRightX() * Constants.drivingTurnSpeedSensitivity));  //lambda () -> used to allow function as a parameter in the method call
     flyWheelSubsystem.setDefaultCommand(new FlyIdleCmd(flyWheelSubsystem)); //default command is run motor at 0.2 (in constants)
   }
 
@@ -52,7 +48,7 @@ public class RobotContainer {
   //Button Mapping Method
   private void configureButtonBindings() {
 
-    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new FlyRevCmd(flyWheelSubsystem, Constants.flyRevSpeed));
+    new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new FlyRevCmd(flyWheelSubsystem, driveFilter.calculate(Constants.flyRevSpeed)));
     new JoystickButton(joy1, XboxController.Button.kX.value).whileActiveOnce(new ControllerRumbleCmd(controlSubsystem, Constants.rumble)); // Init a new JoystickButton as trigger for command, then pass xbox controller & assigned button as condition. When pressed once, execute the flywheel rev cmd
 
   }
